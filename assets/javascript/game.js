@@ -8,9 +8,11 @@
 // List of values
 var pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
 
-// Select random value
+// Select random value - math.random selects number between 0-1
 var selection = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+var lowerSelection = selection.toLowerCase();
 console.log(selection);
+console.log(lowerSelection);
 
 //Find out the legth of the word
 var remainingLetters = selection.length;
@@ -30,7 +32,7 @@ var guessedWrong = [];
 var guessedCorrectly = [];
 
 
-//Declare input field variable  - NEED TO REMOVE COMMAS
+//Declare input field variable 
 var inputField = [];
 for (var i = 0; i < selection.length; i++) {
     inputField[i] = ("_ ");
@@ -38,23 +40,47 @@ for (var i = 0; i < selection.length; i++) {
 console.log(inputField.join(''));
 document.write(inputField.join(''));
 
-
 // This function is run whenever the user presses a key and Determines which key was pressed..
+
 document.onkeyup = function (event) {
+
     var userGuess = event.key;
-    guessedLetters.push(userGuess);
-    console.log(userGuess);
-    console.log(guessedLetters);
-    if (selection.includes(userGuess)) {
-        guessedCorrectly.push(userGuess);
-        console.log("Guessed letter: " + guessedCorrectly)
+    guessedLetters.push(userGuess.toLowerCase());
+
+
+    if (maxGuesses === 0) {
+        alert("GAME OVER")
     }
-    else {
-        guessedWrong.push(userGuess);
+
+    //checks if input is part of the word (lowercase)
+    if (lowerSelection.includes(userGuess.toLowerCase())) {
+        guessedCorrectly.push(userGuess.toLowerCase());
+        console.log("Guessed letter: " + guessedCorrectly);
+        console.log(maxGuesses);
+        revealLetter(userGuess);
+
+    } else {
+        guessedWrong.push(userGuess.toLowerCase());
         console.log("Wrong letters: " + guessedWrong);
-    };
+        maxGuesses--;
+        console.log(maxGuesses);
+
+    }
+    document.querySelector("#GuessesRemaining").innerHTML = maxGuesses;
 }
 
+function revealLetter(userGuess) {
+    lowerSelection.indexOf(userGuess);
+    console.log(selection.indexOf(userGuess));
+    inputField[selection.indexOf(userGuess)] = ("");
+
+}
+
+
+
+function reset() {
+    maxGuesses = 7;
+};
 
 
 
