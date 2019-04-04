@@ -40,41 +40,58 @@ for (var i = 0; i < selection.length; i++) {
 console.log(inputField.join(''));
 document.write(inputField.join(''));
 
+//generate alphabet
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+// console.log(alphabet);
+
 // This function is run whenever the user presses a key and Determines which key was pressed..
 
 document.onkeyup = function (event) {
 
     var userGuess = event.key;
-    guessedLetters.push(userGuess.toLowerCase());
 
 
-    if (maxGuesses === 0) {
-        alert("GAME OVER")
-    }
+    if (alphabet.includes(userGuess.toLowerCase())) {
 
-    //checks if input is part of the word (lowercase)
-    if (lowerSelection.includes(userGuess.toLowerCase())) {
-        guessedCorrectly.push(userGuess.toLowerCase());
-        console.log("Guessed letter: " + guessedCorrectly);
-        console.log(maxGuesses);
-        revealLetter(userGuess);
+        if (guessedLetters.includes(userGuess.toLowerCase())) {
+            alert("You have already tried letter -" + userGuess + "-! Please try a different letter.")
+        }
+        else {
 
-    } else {
-        guessedWrong.push(userGuess.toLowerCase());
-        console.log("Wrong letters: " + guessedWrong);
-        maxGuesses--;
-        console.log(maxGuesses);
+            guessedLetters.push(userGuess.toLowerCase());
+            if (maxGuesses === 0) {
+                alert("GAME OVER")
+            }
 
-    }
-    document.querySelector("#GuessesRemaining").innerHTML = maxGuesses;
+            //checks if input is part of the word (lowercase)
+            if (lowerSelection.includes(userGuess.toLowerCase())) {
+                guessedCorrectly.push(userGuess.toLowerCase());
+                console.log("Guessed letter: " + guessedCorrectly);
+                console.log(maxGuesses);
+                // showLetter(userGuess);
+                // function showLetter(userGuess) {
+                lowerSelection.indexOf(userGuess.toLowerCase());
+                console.log("Position" + lowerSelection.indexOf(userGuess.toLowerCase()));
+                inputField[lowerSelection.indexOf(userGuess.toLowerCase())] = ("YO");
+                document.write(inputField.join(''));
+
+
+
+            } else {
+                guessedWrong.push(userGuess.toLowerCase());
+                console.log("Wrong letters: " + guessedWrong);
+                maxGuesses--;
+                console.log(maxGuesses);
+
+            }
+            // document.querySelector("#GuessesRemaining").innerHTML = maxGuesses;
+        }
+        //this is a pop up if input is not letters
+    } else { alert("Please input letters only!") }
 }
 
-function revealLetter(userGuess) {
-    lowerSelection.indexOf(userGuess);
-    console.log(selection.indexOf(userGuess));
-    inputField[selection.indexOf(userGuess)] = ("");
 
-}
 
 
 
