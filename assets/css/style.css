@@ -59,6 +59,13 @@ p {
     margin-bottom: 10px;
 }
 
+#newGame {
+    font-size: 30px;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #003A70;
+}
+
 #losses {
     font-size: 30px;
     width: 100%;

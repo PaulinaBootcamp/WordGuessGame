@@ -20,30 +20,32 @@
     <div class="container">
         <!-- Who's that pokemon banner -->
         <div class="row">
-            <div class="col-md-4">
-                <div class="text-center">
-                    <img class="pokemon-banner" src="assets/images/GameLogo.png">
-                </div>
-            </div>
+
             <!-- Welcome, Rules, Scoreboard -->
             <div class="col-md-8">
 
                 <div class="text-center">
                     <p id="welcomeMsg">Welcome, Paulina!</p>
                     <!-- <p id="pokeFacts"> -->
-                    <div id="pokeFacts"> Pokémon are creatures of all shapes and sizes who live in the wild or
+                    <div id="pokeFacts"> Did you know that Pokémon are creatures of all shapes and sizes who live in the
+                        wild or
                         alongside
-                        humans.</div>
+                        humans?</div>
                     <div id="pokeFacts"> During
                         their adventures, Pokémon grow and become more
-                        experienced and even, on occasion, evolve into stronger Pokémon.</div>
-                    <div id="pokeFacts">There are currently more than
+                        experienced and even, on occasion, evolve into stronger Pokémon. There are currently more than
                         700 creatures that inhabit the Pokémon universe!</div>
+                    <div id="pokeFacts"></div>
                     <!-- </p> -->
                     <p> Can you name this mysterious Pokemon?</p>
 
-                    <div class="row">
-                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img class="pokemon-banner" src="assets/images/GameLogo.png">
                 </div>
 
             </div>
@@ -60,12 +62,22 @@
             </div>
             <div class="col-md-4 col">
                 <div class="text-center">
-                    <p>You have 7 tries </p>
+
+
+                    <div class="col-md-12">
+                        <!-- <p id="wins"></p> -->
+
+                        <button id="newGame" type="button" class="btn btn-warning">New game!</button>
+                        <!-- <span  class="badge badge-pill badge-warning"></span> -->
+                    </div>
+
                     <p>To begin, press your first letter seleciton.</p>
-                    <p>Good luck!</p>
-                    <p id="guessesRemaining"></p>
+                    <p></p>
+                    <p>You have 7 tries. Good luck!</p>
+
                     <p id="userSelection"></p>
                     <p id="guessedWrong"></p>
+                    <p id="guessesRemaining"></p>
                     <!-- <img id="hint-image" class="pokemon-hint" src="assets/images/manyPokes.jpg"> -->
 
                     <div class="col-md-12">
