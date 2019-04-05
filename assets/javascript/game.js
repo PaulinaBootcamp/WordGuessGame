@@ -9,11 +9,11 @@ document.getElementById("welcomeMsg").innerHTML = ("Welcome, " + name + "!");
 //   const image = document.getElementById("hint-image");
 //   image.src = "assets/images/" + selection + ".jpg";
 
-
+// "Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu",
 
 
 // List of values
-pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
+pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu",];
 
 
 
