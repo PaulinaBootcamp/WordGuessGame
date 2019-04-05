@@ -72,15 +72,7 @@ document.onkeyup = function (event) {
             guessedLetters.push(userGuess.toLowerCase());
 
             //if run out of guesses, GAME OVER
-            if (maxGuesses === 1) {
-                alert("GAME OVER");
-                losses++;
-                console.log("LOSSES " + losses);
 
-                document.getElementById("losses").innerHTML = ("Losses: " + losses);
-                document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
-                reset();
-            }
 
             //checks if input is part of the word (lowercase)
             if (lowerSelection.includes(userGuess.toLowerCase())) {
@@ -110,7 +102,12 @@ document.onkeyup = function (event) {
                 console.log("Wrong letters: " + guessedWrong);
                 maxGuesses--;
                 console.log(maxGuesses);
+                // check if there are any guesses remaining, if zero GAME OVER
                 document.getElementById("guessesRemaining").innerHTML = ("Guesses remainig: " + maxGuesses);
+                setTimeout(function () {
+                    checkIfLoser(maxGuesses);
+                }, 0);
+                ;
 
             }
             // document.querySelector("#GuessesRemaining").innerHTML = maxGuesses;
@@ -140,6 +137,18 @@ function checkIfWinner(userSelection, randomSelection) {
         alert("WINNER, WINNER, CHICKEN DINNER!");
         wins++;
         console.log("WINS " + wins);
+        document.getElementById("wins").innerHTML = ("Wins: " + wins);
+        document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+        reset();
+    }
+}
+//if no guesses left, you lose!
+function checkIfLoser(maxGuesses) {
+    if (maxGuesses === 0) {
+        alert("GAME OVER");
+        losses++;
+        console.log("LOSSES " + losses);
+
         document.getElementById("losses").innerHTML = ("Losses: " + losses);
         document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
         reset();
@@ -159,7 +168,7 @@ function reset() {
     console.log(remainingLetters)
 
     //Set maximum guesses available
-    maxGuesses = 8;
+    maxGuesses = 7;
 
     // Store letters guessed by the user
     guessedLetters = [];
