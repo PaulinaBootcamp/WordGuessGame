@@ -1,44 +1,54 @@
 
 // //This is the welcome prompts and capture of username
-// var name = prompt("Welome, trainer! What is your name?");
+//  name = prompt("Welome, trainer! What is your name?");
 // console.log("Welcome, " + name + "!");
-// var playNow = confirm("Are you ready to test your Pokemon knowladge, " + name + "?");
+//  playNow = confirm("Are you ready to test your Pokemon knowladge, " + name + "?");
 // document.write("Good luck, " + name + "!");
 
 // List of values
-var pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
+pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
 
 // Select random value - math.random selects number between 0-1
-var selection = pokemonList[Math.floor(Math.random() * pokemonList.length)];
-var lowerSelection = selection.toLowerCase();
+randomSelection = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+selection = randomSelection;
+lowerSelection = selection.toLowerCase();
 console.log(selection);
 console.log(lowerSelection);
 
 //Find out the legth of the word
-var remainingLetters = selection.length;
+remainingLetters = selection.length;
 console.log(remainingLetters)
 
 //Set maximum guesses available
-var maxGuesses = 7;
+maxGuesses = 7;
 
 // Store letters guessed by the user
-var guessedLetters = [];
+guessedLetters = [];
 
 //track wins and losses
-var wins = 0;
-var losses = 0;
+wins = 0;
+losses = 0;
 
-var guessedWrong = [];
-var guessedCorrectly = [];
+guessedWrong = [];
+guessedCorrectly = [];
 
 
-//Declare input field variable 
-var inputField = [];
-for (var i = 0; i < selection.length; i++) {
+//Declare input field iable 
+inputField = [];
+for (i = 0; i < selection.length; i++) {
     inputField[i] = ("_ ");
 }
 console.log(inputField.join(''));
-document.write(inputField.join(''));
+
+
+// to HTML elements
+userSelection = document.getElementById("userSelection");
+userSelection.textContent = inputField.join('');
+
+document.getElementById("wins").innerHTML = ("Wins: " + wins);
+document.getElementById("losses").innerHTML = ("Losses: " + losses);
+document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+
 
 //generate alphabet
 
@@ -49,7 +59,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 document.onkeyup = function (event) {
 
-    var userGuess = event.key;
+    userGuess = event.key;
 
 
     if (alphabet.includes(userGuess.toLowerCase())) {
@@ -58,10 +68,18 @@ document.onkeyup = function (event) {
             alert("You have already tried letter -" + userGuess + "-! Please try a different letter.")
         }
         else {
-
+            // record all user guesses 
             guessedLetters.push(userGuess.toLowerCase());
-            if (maxGuesses === 0) {
-                alert("GAME OVER")
+
+            //if run out of guesses, GAME OVER
+            if (maxGuesses === 1) {
+                alert("GAME OVER");
+                losses++;
+                console.log("LOSSES " + losses);
+
+                document.getElementById("losses").innerHTML = ("Losses: " + losses);
+                document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+                reset();
             }
 
             //checks if input is part of the word (lowercase)
@@ -69,13 +87,22 @@ document.onkeyup = function (event) {
                 guessedCorrectly.push(userGuess.toLowerCase());
                 console.log("Guessed letter: " + guessedCorrectly);
                 console.log(maxGuesses);
-                // showLetter(userGuess);
-                // function showLetter(userGuess) {
-                lowerSelection.indexOf(userGuess.toLowerCase());
-                console.log("Position" + lowerSelection.indexOf(userGuess.toLowerCase()));
-                inputField[lowerSelection.indexOf(userGuess.toLowerCase())] = ("YO");
-                document.write(inputField.join(''));
 
+
+                //list all positions where letter is found
+                allPositions = [];
+                for (i = 0; i < lowerSelection.length; i++) {
+                    if (lowerSelection[i] === userGuess.toLowerCase()) allPositions.push(i);
+                    // console.log(allPositions)
+                }
+
+
+                showLetter(userGuess, allPositions);
+
+                setTimeout(function () {
+                    checkIfWinner(userSelection, randomSelection);
+                }, 0);
+                ;
 
 
             } else {
@@ -83,23 +110,77 @@ document.onkeyup = function (event) {
                 console.log("Wrong letters: " + guessedWrong);
                 maxGuesses--;
                 console.log(maxGuesses);
+                document.getElementById("guessesRemaining").innerHTML = ("Guesses remainig: " + maxGuesses);
 
             }
             // document.querySelector("#GuessesRemaining").innerHTML = maxGuesses;
         }
         //this is a pop up if input is not letters
     } else { alert("Please input letters only!") }
+
+
 }
 
 
 
 
+function showLetter(userGuess, allPositions) {
+    // console.log("Position" + lowerSelection.indexOf(userGuess.toLowerCase()));
+    // inputField[lowerSelection.indexOf(userGuess.toLowerCase())] = selection[lowerSelection.indexOf(userGuess.toLowerCase())];
+    for (i = 0; i < allPositions.length; i++) {
+        idxWhereToPutIt = allPositions[i];
 
+        inputField[idxWhereToPutIt] = selection[idxWhereToPutIt];
+    }
+    userSelection.textContent = inputField.join('');
+}
+//if all letters revealed, YOU WIN!
+function checkIfWinner(userSelection, randomSelection) {
+    if (userSelection.textContent === randomSelection) {
+        alert("WINNER, WINNER, CHICKEN DINNER!");
+        wins++;
+        console.log("WINS " + wins);
+        document.getElementById("losses").innerHTML = ("Losses: " + losses);
+        document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+        reset();
+    }
+}
+
+//this reset funstion restores all values except reseting number of wins/losses
 function reset() {
-    maxGuesses = 7;
-};
+    randomSelection = pokemonList[Math.floor(Math.random() * pokemonList.length)];
+    selection = randomSelection;
+    lowerSelection = selection.toLowerCase();
+    console.log(selection);
+    console.log(lowerSelection);
+
+    //Find out the legth of the word
+    remainingLetters = selection.length;
+    console.log(remainingLetters)
+
+    //Set maximum guesses available
+    maxGuesses = 8;
+
+    // Store letters guessed by the user
+    guessedLetters = [];
+
+    //track wins and losses
+    // wins = 0;
+    // losses = 0;
+
+    guessedWrong = [];
+    guessedCorrectly = [];
 
 
+    //Declare input field iable 
+    inputField = [];
+    for (i = 0; i < selection.length; i++) {
+        inputField[i] = ("_ ");
+    }
+    console.log(inputField.join(''));
 
-
-
+    userSelection = document.getElementById("userSelection");
+    userSelection.textContent = inputField.join('');
+    document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+    console.log("NEW " + randomSelection);
+}
