@@ -10,6 +10,8 @@ document.getElementById("welcomeMsg").innerHTML = ("Welcome, " + name + "!");
 //   image.src = "assets/images/" + selection + ".jpg";
 
 
+
+
 // List of values
 pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
 
