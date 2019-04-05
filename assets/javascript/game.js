@@ -8,12 +8,23 @@
 // List of values
 pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
 
+
+
+
 // Select random value - math.random selects number between 0-1
 randomSelection = pokemonList[Math.floor(Math.random() * pokemonList.length)];
 selection = randomSelection;
 lowerSelection = selection.toLowerCase();
 console.log(selection);
 console.log(lowerSelection);
+
+
+
+// var newImg = ("assets/images/" + selection + ".jpg");
+// console.log(newImg);
+const image = document.getElementById("hint-image");
+image.src = "assets/images/" + selection + ".jpg";
+
 
 //Find out the legth of the word
 remainingLetters = selection.length;
@@ -72,7 +83,7 @@ document.onkeyup = function (event) {
             // record all user guesses 
             guessedLetters.push(userGuess.toLowerCase());
 
-            //if run out of guesses, GAME OVER
+
 
 
             //checks if input is part of the word (lowercase)
@@ -147,7 +158,7 @@ function checkIfWinner(userSelection, randomSelection) {
 //if no guesses left, you lose!
 function checkIfLoser(maxGuesses) {
     if (maxGuesses === 0) {
-        alert("GAME OVER");
+        alert("GAME OVER, PIKACHU IS CRYING :(");
         losses++;
         console.log("LOSSES " + losses);
 
@@ -195,4 +206,6 @@ function reset() {
     document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
     document.getElementById("guessedWrong").innerHTML = ("Letters not found: " + guessedWrong);
     console.log("NEW " + randomSelection);
+    const image = document.getElementById("hint-image");
+    image.src = "assets/images/" + selection + ".jpg";
 }

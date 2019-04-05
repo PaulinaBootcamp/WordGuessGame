@@ -7,36 +7,60 @@ body {
     opacity: 1.0;
 }
 
+#pokeFacts {
+    /* color: #FFCB05; */
+    color: #3D7DCA;
+    font-family: 'Acme', sans-serif;
+}
+
+#userSelection {
+    color: #3D7DCA;
+    font-size: 40px;
+}
+
 .container {
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 20px;
     background: rgb(235, 241, 248);
-    border: 10px;
+    border: 50px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px 25px rgba(255, 255, 255, 0.3);
 }
 
 .pokemon-banner {
-    width: 75%;
+    width: 65%;
     height: auto;
 }
 
+.pokemon-hint {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
 div {
-    font-family: 'Secular One', sans-serif;
+    font-family: 'Acme', sans-serif;
 }
 
 #welcomeMsg {
     font-size: 40px;
+    /* color: #FFCB05; */
 }
 
 p {
-    padding: 15px;
+    padding: 7px;
+    color: #003A70;
 }
 
 #wins {
-    color: rgb(10, 163, 10);
     font-size: 30px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #losses {
-    color: rgb(185, 28, 28);
     font-size: 30px;
+    width: 100%;
+    margin-bottom: 10px;
 }

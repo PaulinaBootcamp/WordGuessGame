@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Karla|Montserrat" rel="stylesheet">
 
     <title>Who's That Pokemon?!</title>
 </head>
@@ -29,16 +30,19 @@
 
                 <div class="text-center">
                     <p id="welcomeMsg">Welcome, Paulina!</p>
-                    <p>Can you name this mysterious Pokemon?</p>
-                    <p>You have 7 tries - good luck!</p>
-                    <p>Press your first letter guess to begin!</p>
+                    <!-- <p id="pokeFacts"> -->
+                    <div id="pokeFacts"> Pokémon are creatures of all shapes and sizes who live in the wild or
+                        alongside
+                        humans.</div>
+                    <div id="pokeFacts"> During
+                        their adventures, Pokémon grow and become more
+                        experienced and even, on occasion, evolve into stronger Pokémon.</div>
+                    <div id="pokeFacts">There are currently more than
+                        700 creatures that inhabit the Pokémon universe!</div>
+                    <!-- </p> -->
+                    <p> Can you name this mysterious Pokemon?</p>
+
                     <div class="row">
-                        <div class="col-md-6">
-                            <p id="wins"></p>
-                        </div>
-                        <div class="col-md-6">
-                            <p id="losses"></p>
-                        </div>
                     </div>
                 </div>
 
@@ -48,15 +52,32 @@
 
         <!-- Row 2 with hints and guessing game -->
         <div class="row">
+            <!--pokemon picture hint goes here -->
             <div class="col-md-8">
-
+                <div class="text-center"> <img id="hint-image" class="pokemon-hint" src="assets/images/Logo2.jpg">
+                </div>
 
             </div>
             <div class="col-md-4 col">
+                <div class="text-center">
+                    <p>You have 7 tries </p>
+                    <p>To begin, press your first letter seleciton.</p>
+                    <p>Good luck!</p>
+                    <p id="guessesRemaining"></p>
+                    <p id="userSelection"></p>
+                    <p id="guessedWrong"></p>
+                    <!-- <img id="hint-image" class="pokemon-hint" src="assets/images/manyPokes.jpg"> -->
 
-                <p id="guessesRemaining"></p>
-                <p id="userSelection"></p>
-                <p id="guessedWrong"></p>
+                    <div class="col-md-12">
+                        <!-- <p id="wins"></p> -->
+                        <span id="wins" class="badge badge-pill badge-success"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- <p id="losses"></p> -->
+                        <span id="losses" class="badge badge-pill badge-danger"></span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
