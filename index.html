@@ -5,17 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Secular+One" rel="stylesheet">
 
     <title>Who's That Pokemon?!</title>
 </head>
 
 <body>
-    <p id="wins"></p>
-    <p id="losses"></p>
-    <p id="guessesRemaining"></p>
-    <p id="userSelection"></p>
+    <div class="container">
+        <!-- Who's that pokemon banner -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img class="pokemon-banner" src="assets/images/GameLogo.png">
+                </div>
+            </div>
+            <!-- Welcome, Rules, Scoreboard -->
+            <div class="col-md-8">
+
+                <div class="text-center">
+                    <p id="welcomeMsg">Welcome, Paulina!</p>
+                    <p>Can you name this mysterious Pokemon?</p>
+                    <p>You have 7 tries - good luck!</p>
+                    <p>Press your first letter guess to begin!</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p id="wins"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="losses"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Row 2 with hints and guessing game -->
+        <div class="row">
+            <div class="col-md-8">
+
+
+            </div>
+            <div class="col-md-4 col">
+
+                <p id="guessesRemaining"></p>
+                <p id="userSelection"></p>
+                <p id="guessedWrong"></p>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="assets/javascript/game.js"></script>
 </body>

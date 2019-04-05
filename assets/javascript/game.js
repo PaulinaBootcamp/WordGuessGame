@@ -1,9 +1,9 @@
 
-// //This is the welcome prompts and capture of username
-//  name = prompt("Welome, trainer! What is your name?");
+//This is the welcome prompts and capture of username
+// name = prompt("Welome, trainer! What is your name?");
 // console.log("Welcome, " + name + "!");
-//  playNow = confirm("Are you ready to test your Pokemon knowladge, " + name + "?");
-// document.write("Good luck, " + name + "!");
+// playNow = confirm("Are you ready to test your Pokemon knowladge, " + name + "?");
+// document.getElementById("welcomeMsg").innerHTML = ("Welcome, " + name + "!");
 
 // List of values
 pokemonList = ["Bellossom", "Bellsprout", "Bulbasaur", "Charizard", "Chikorita", "Cyndaquil", "Exeggcute", "Hypno", "Magmar", "Mewtwo", "Onix", "Pikachu"];
@@ -48,6 +48,7 @@ userSelection.textContent = inputField.join('');
 document.getElementById("wins").innerHTML = ("Wins: " + wins);
 document.getElementById("losses").innerHTML = ("Losses: " + losses);
 document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+document.getElementById("guessedWrong").innerHTML = ("Letters not found: " + guessedWrong);
 
 
 //generate alphabet
@@ -100,6 +101,7 @@ document.onkeyup = function (event) {
             } else {
                 guessedWrong.push(userGuess.toLowerCase());
                 console.log("Wrong letters: " + guessedWrong);
+                document.getElementById("guessedWrong").innerHTML = ("Letters not found: " + guessedWrong);
                 maxGuesses--;
                 console.log(maxGuesses);
                 // check if there are any guesses remaining, if zero GAME OVER
@@ -191,5 +193,6 @@ function reset() {
     userSelection = document.getElementById("userSelection");
     userSelection.textContent = inputField.join('');
     document.getElementById("guessesRemaining").innerHTML = ("Guesses remaining: " + maxGuesses);
+    document.getElementById("guessedWrong").innerHTML = ("Letters not found: " + guessedWrong);
     console.log("NEW " + randomSelection);
 }

@@ -1,0 +1,42 @@
+body {
+    /* background: rgb(253, 253, 253); */
+    background-image: url('../images/PrefWall.jpg');
+    background-repeat: no-repeat;
+    /* min-height: 100%; */
+    background-size: cover;
+    opacity: 1.0;
+}
+
+.container {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgb(235, 241, 248);
+    border: 10px;
+}
+
+.pokemon-banner {
+    width: 75%;
+    height: auto;
+}
+
+div {
+    font-family: 'Secular One', sans-serif;
+}
+
+#welcomeMsg {
+    font-size: 40px;
+}
+
+p {
+    padding: 15px;
+}
+
+#wins {
+    color: rgb(10, 163, 10);
+    font-size: 30px;
+}
+
+#losses {
+    color: rgb(185, 28, 28);
+    font-size: 30px;
+}
